@@ -12,9 +12,9 @@ const Item = ({ item }) => {
         ></img>
       </div>
       <div className="py-3 px-2">
-        <h3>{item.title}</h3>
+        <h3><strong>{item.title}</strong></h3>
         <p>{item.detail}</p>
-        <h4>{item.price}</h4>
+        <h4>$ {item.price}</h4>
       </div>
       <ItemCount initial={1} stock={item.stock} />
     </div>

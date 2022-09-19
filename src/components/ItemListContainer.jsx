@@ -17,12 +17,16 @@ const ItemListContainer = (props) => {
   const[products, setProducts] = useState([])
 
   useEffect(()=>{
-    getProducts().then(
+    getProducts()
+    .then(
       (response)=>{ 
         console.log("Promise en estado puro")
         setProducts(response)
       }
-    );
+    )
+    .catch((error)=>{
+      alert(error)
+    });
   },[])
 
   /*<div className="w-60 h-25 border rounded  p-5 m-5 bg-orange-200">
