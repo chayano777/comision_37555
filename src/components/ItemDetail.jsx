@@ -1,26 +1,30 @@
-import ItemCount from './ItemCount'
+import ItemCount from "./ItemCount";
 
-const ItemDetail = ({item}) => {
-  console.log(item);
-  return ( 
-    <div className="my-4 mx-3 w-full h-full border rounded shadow-md bg-white overflow-hidden transition-property: all duration-100 ease-in min-h-280">
-      <div className="w-72 h-64 object-cover">
-        <img
-          className="w-full h-full object-contain"
-          src={item.imagen}
-          alt=""
+const ItemDetail = ({ idProd }) => {
+  console.log(idProd);
+  return (
+    <div className="my-10 mx-3 w-1/2 h-1/2 border rounded shadow-md bg-orange-100 overflow-hidden transition-property: all duration-100 ease-in min-h-280">
+      <div className="flex justify-evenly">
+        <div className="my-5 w-72 h-64 object-cover">
+          <img
+            className="py-5 w-full h-full object-contain"
+            src={idProd.imagen}
+            alt=""
           ></img>
+        </div>
+        <div className="py-3 px-2">
+          <h3 className="py-2 text-orange-700 text-lg font-bold text-center">
+            {idProd.title}
+          </h3>
+          <p className="py-2">{idProd.detail}</p>
+          <h4 className="py-2 text-center font-bold">$ {idProd.price}</h4>
+          <div className="py-10">
+            <ItemCount initial={1} stock={idProd.stock} />
+          </div>
+        </div>
       </div>
-      <div className="py-3 px-2">
-        <h3><strong>{item.title}</strong></h3>
-        <p>{item.detail}</p>
-        <h4>$ {item.price}</h4>
-      </div>
-      <ItemCount initial={1} stock={item.stock} />
     </div>
-    
-          
-  )
-}
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;

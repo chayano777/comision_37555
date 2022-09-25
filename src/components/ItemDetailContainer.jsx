@@ -1,17 +1,25 @@
 import ItemDetail from './ItemDetail'
-import getProducts from '../services/dataREST'
-import { useState, useEffect } from 'react'
+import { getSingleProduct } from '../services/dataREST'
+import { useState, useEffect} from 'react'
+import { CircleLoader } from "react-spinners";
 
 
+const spinner = () => {
+  return (
+    <div className="mt-40 text-center">
+      <CircleLoader color="#D0021B" size={40} />
+    </div>
+  );
+};
 
 const ItemDetailContainer = () => {
     
     const [idProd, setIdProd]= useState({})
     useEffect(()=>{
-      getProducts()
+      getSingleProduct()
       .then((response)=>{
         console.log("Un ITEM")
-        setIdProd(response.id[1])
+        setIdProd(response)
       })
       .catch((error)=>{
         alert(error)
@@ -20,7 +28,7 @@ const ItemDetailContainer = () => {
 
     return (
       <div className="flex justify-center">
-        <ItemDetail idProd={idProd} /> 
+        {idProd ? <ItemDetail idProd={idProd}/> : spinner()} 
   </div>
   )
 }

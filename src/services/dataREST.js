@@ -12,9 +12,9 @@ const data = [
     id: 2,
     title: "Ropa Bebe (F)",
     price: 800,
-    stock: 7,
+    stock: 5,
     category: "clothes",
-    detail: "Rellenar a futuro",
+    detail: "Enterito para beba, talle 9 meses",
     imagen: "/img/ropa2.png"
   },
   {
@@ -85,3 +85,14 @@ export default function getProducts() {
   });
 }
 
+export function getSingleProduct(){
+  return new Promise((resolve, reject)=>{
+    if(data){
+      setTimeout(()=>{
+        resolve(data[1]);
+      },2000)
+    }else {
+      reject(new Error("El item no pudo venir!!!"))
+    }
+  })
+}
