@@ -1,7 +1,10 @@
-import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
+
 
 const Item = ({ item }) => {
   //let {price, title, imagen, detail, stock} = props;
+  
+  const urlDetail = `/category/${item.id}`
   return (
     <div className="my-4 mx-3 w-full h-full border rounded shadow-md bg-white overflow-hidden transition-property: all duration-100 ease-in min-h-280">
       <div className="w-72 h-64 object-cover">
@@ -16,9 +19,8 @@ const Item = ({ item }) => {
         <p>{item.detail}</p>
         <h4>$ {item.price}</h4>
       </div>
-      <ItemCount initial={1} stock={item.stock} />
       <div className="flex justify-center">
-      <button className="bg-orange-500 hover:bg-orange-200 hover:text-orange-500 text-white font-bold py-2 px-4 m-4 rounded"><strong> Siguiente</strong></button>
+      <Link to={urlDetail} className="bg-orange-500 hover:bg-orange-200 hover:text-orange-500 text-white font-bold py-2 px-4 m-4 rounded"><strong>Detalle</strong></Link>
       </div>
     </div>
   );

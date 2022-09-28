@@ -2,6 +2,7 @@ import ItemDetail from './ItemDetail'
 import { getSingleProduct } from '../services/dataREST'
 import { useState, useEffect} from 'react'
 import { CircleLoader } from "react-spinners";
+import { useParams } from 'react-router-dom';
 
 
 const spinner = () => {
@@ -13,9 +14,13 @@ const spinner = () => {
 };
 
 const ItemDetailContainer = () => {
-    
+    const { id } = useParams(); 
     const [idProd, setIdProd]= useState({})
     useEffect(()=>{
+      getSingleProduct(id).then((respuesta)=> setIdProd(respuesta))
+    }, [id]);
+
+    {/*useEffect(()=>{
       getSingleProduct()
       .then((response)=>{
         console.log("Un ITEM")
@@ -24,7 +29,7 @@ const ItemDetailContainer = () => {
       .catch((error)=>{
         alert(error)
       });
-    },[])
+    },[]) */}
 
     return (
       <div className="flex justify-center">

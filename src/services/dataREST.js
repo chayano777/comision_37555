@@ -4,7 +4,7 @@ const data = [
     title: "Ropa Bebe (M)",
     price: 800,
     stock: 10,
-    category: "clothes",
+    category: "clothing",
     detail: "Rellenar a futuro",
     imagen: "/img/ropa1.png"
   },
@@ -13,7 +13,7 @@ const data = [
     title: "Ropa Bebe (F)",
     price: 800,
     stock: 5,
-    category: "clothes",
+    category: "clothing",
     detail: "Enterito para beba, talle 9 meses",
     imagen: "/img/ropa2.png"
   },
@@ -22,7 +22,7 @@ const data = [
     title: "Body p/ recien nacido (F)",
     price: 600,
     stock: 3,
-    category: "clothes",
+    category: "clothing",
     detail: "Rellenar a futuro",
     imagen: "/img/ropa3.png"
   },
@@ -31,7 +31,7 @@ const data = [
     title: "Kit Ropa Bebe (F-M)",
     price: 2700,
     stock: 2,
-    category: "clothes",
+    category: "clothing",
     detail: "Rellenar a futuro",
     imagen: "/img/ropa4.jpg"
   },
@@ -78,14 +78,26 @@ export default function getProducts() {
     if(data){
       setTimeout(() => {
         resolve(data);
-      }, 2000);
+      }, 1000);
     }else {
       reject(new Error("Error en Base de Datos!"));
     }
   });
 }
 
-export function getSingleProduct(){
+export function getCategoryProducts(categoryN) {
+  return new Promise((resolve, reject)=>{
+    let productFilter = data.filter((item)=>{
+      return item.category === categoryN;
+    });
+    setTimeout(() => {
+      if(productFilter) {resolve(productFilter)}
+      else {reject(new Error("Producto no encontrado"))}
+    }, 1000);
+  })
+} 
+
+{/*export function getSingleProduct(){
   return new Promise((resolve, reject)=>{
     if(data){
       setTimeout(()=>{
@@ -94,5 +106,17 @@ export function getSingleProduct(){
     }else {
       reject(new Error("El item no pudo venir!!!"))
     }
+  })
+}*/}
+
+export function getSingleProduct(idProduct){
+  return new Promise((resolve, reject)=>{
+    let productFind = data.find((item)=>{
+      return item.id === parseInt(idProduct);
+    });
+    setTimeout(() => {
+      if(productFind) {resolve(productFind)}
+      else {reject(new Error("Producto no encontrado"))}
+    }, 1000);
   })
 }
