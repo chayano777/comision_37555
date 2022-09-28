@@ -13,7 +13,7 @@ const NavBar = () => {
             <ul className='flex gap-4' >
                 <Link to="/"><li><strong>Home</strong></li></Link> 
                 <Link to="/category/clothing"><li><strong>Clothing</strong></li></Link>
-                <Link to="category/accesories"><li><strong>Accesories</strong></li></Link>
+                <Link to="/category/accesories"><li><strong>Accesories</strong></li></Link>
             </ul>
             <CartWidget />
         </nav>

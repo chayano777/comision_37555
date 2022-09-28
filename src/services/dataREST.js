@@ -97,17 +97,6 @@ export function getCategoryProducts(categoryN) {
   })
 } 
 
-{/*export function getSingleProduct(){
-  return new Promise((resolve, reject)=>{
-    if(data){
-      setTimeout(()=>{
-        resolve(data[1]);
-      },2000)
-    }else {
-      reject(new Error("El item no pudo venir!!!"))
-    }
-  })
-}*/}
 
 export function getSingleProduct(idProduct){
   return new Promise((resolve, reject)=>{

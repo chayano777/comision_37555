@@ -4,7 +4,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
 
-//<ItemListContainer greeting="Bienvenidos a Pichono's" />
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +14,7 @@ function App() {
         />
         <Route path="/category/:categoryN" element={<ItemListContainer greeting="Bienvenidos a Pichono's" />}
         />
-        <Route path="/category/:id" element={<ItemDetailContainer />}
+        <Route path="/category/:categoryN/:id" element={<ItemDetailContainer />}
         />
       </Routes>
     </BrowserRouter>

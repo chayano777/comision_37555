@@ -20,6 +20,9 @@ const ItemListContainer = (props) => {
   const[products, setProducts] = useState([])
   
 
+  
+
+  
   useEffect(()=>{
     if(categoryN === undefined){
     getProducts()
@@ -46,6 +49,7 @@ const ItemListContainer = (props) => {
     }
   },[categoryN])
 
+  
   /*<div className="w-60 h-25 border rounded  p-5 m-5 bg-orange-200">
           <ItemCount stock="5" initial={1} />
         </div>

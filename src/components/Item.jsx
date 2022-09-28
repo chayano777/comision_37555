@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Item = ({ item }) => {
   //let {price, title, imagen, detail, stock} = props;
   
-  const urlDetail = `/category/${item.id}`
+  const urlDetail = `/category/${item.category}/${item.id}`
   return (
     <div className="my-4 mx-3 w-full h-full border rounded shadow-md bg-white overflow-hidden transition-property: all duration-100 ease-in min-h-280">
       <div className="w-72 h-64 object-cover">
