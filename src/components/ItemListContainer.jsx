@@ -1,27 +1,25 @@
 import { useState, useEffect } from "react";
 import getProducts from "../services/dataREST";
 import { getCategoryProducts } from "../services/dataREST";
-import { CircleLoader } from "react-spinners";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-
-const spinner = () => {
-  return (
-    <div className="mt-40 text-center">
-      <CircleLoader color="#D0021B" size={40} />
-    </div>
-  );
-};
+import Spinner from "./Spinner";
 
 
 const ItemListContainer = (props) => {
 
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
   const { categoryN } = useParams(); 
   const[products, setProducts] = useState([])
   
-
-  
-
   
   useEffect(()=>{
     if(categoryN === undefined){
@@ -60,7 +58,7 @@ const ItemListContainer = (props) => {
         <strong>{props.greeting}</strong>
       </h1>
       <div className="flex justify-center">
-        {!products ? spinner(): <ItemList products={products} />}
+        {loading ? <Spinner loading={loading} /> : <ItemList products={products}/>}
       </div>
     </>
   );
