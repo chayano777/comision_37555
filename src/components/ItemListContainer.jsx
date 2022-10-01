@@ -47,11 +47,6 @@ const ItemListContainer = (props) => {
     }
   },[categoryN])
 
-  
-  /*<div className="w-60 h-25 border rounded  p-5 m-5 bg-orange-200">
-          <ItemCount stock="5" initial={1} />
-        </div>
-  */
   return (
     <>
       <h1 className="container text-center py-5 text-orange-600 text-3xl">
