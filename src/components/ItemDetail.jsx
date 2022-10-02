@@ -1,7 +1,17 @@
 import ItemCount from "./ItemCount";
+import { useState} from "react"
+import { Link } from "react-router-dom"
 
 const ItemDetail = ({ idProd }) => {
   console.log(idProd);
+
+  const [handleEstado, setHandleEstado] = useState(false)
+  
+  const handleAddToCart = (count ) => {
+    alert(`Agregaste al carrito ${count} productos.`)
+    setHandleEstado(true)
+  }
+
   return (
     <div className="my-10 mx-3 w-1/2 h-1/2 border rounded shadow-md bg-orange-100 overflow-hidden transition-property: all duration-100 ease-in min-h-280">
       <div className="flex justify-evenly border-2 border-orange-700 border-solid rounded-xl">
@@ -18,8 +28,8 @@ const ItemDetail = ({ idProd }) => {
           </h3>
           <p className="py-2">{idProd.detail}</p>
           <h4 className="py-2 text-center font-bold">$ {idProd.price}</h4>
-          <div className="py-10">
-            <ItemCount initial={1} stock={idProd.stock} />
+          <div className="flex justify-center items-center py-10">
+            {handleEstado===false?<ItemCount initial={1} stock={idProd.stock} onAddToCart={handleAddToCart}/>:<Link to="/cart" className="bg-orange-500 hover:bg-orange-200 hover:text-orange-500 text-white font-bold rounded py-2 px-4 my-5">Comprar</Link>}
           </div>
         </div>
       </div>
