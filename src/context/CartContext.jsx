@@ -17,13 +17,36 @@ const CartProvider = ({children}) => {
     }, [cart])
 
     function addItem(idProd, count) {
-        let newCart = cart.map(item=>item);
-        newCart.push({...idProd, count});
-        setCart(newCart);
+        if(isInCart(idProd.id)){
+          let newCart = cart.map(itemMap=>{
+            if(itemMap.id === idProd.id){
+              itemMap.count += count
+              return itemMap
+            }else 
+            return itemMap
+          });
+          setCart(newCart)
+        }else{
+          let newCart = cart.map(item=>item);
+          newCart.push({...idProd, count});
+          setCart(newCart);
+        }
+    }
+
+    const removeItem = (id) => {
+      setCart(cart.filter(el => el.id !== id))
+  }
+
+    const clearCart = (idProd) => {
+      setCart([]);
+  }
+
+    const isInCart = (id) => {
+      return cart.some(el=>el.id===id);
     }
 
   return (
-    <Provider value={{cart, addItem, qtyProd}}>
+    <Provider value={{cart, addItem, qtyProd, isInCart, clearCart, removeItem}}>
         {children}
     </Provider>
   )
