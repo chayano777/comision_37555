@@ -30,7 +30,7 @@ const ItemDetail = ({ idProd }) => {
           <p className="py-2">{idProd.detail}</p>
           <h4 className="py-2 text-center font-bold">$ {idProd.price}</h4>
           <div className="flex justify-center items-center py-10">
-            {handleEstado===false?<ItemCount initial={1} stock={idProd.stock} onAddToCart={handleAddToCart}/>:<Link to="/cart" className="bg-orange-500 hover:bg-orange-200 hover:text-orange-500 text-white font-bold rounded py-2 px-4 my-5">Comprar</Link>}
+            {handleEstado===false?<ItemCount initial={1} stock={idProd.stock} onAddToCart={handleAddToCart}/>:<> <Link to="/cart" className="bg-orange-500 hover:bg-orange-200 hover:text-orange-500 text-white font-bold rounded py-2 px-4 my-5">Ir al carro</Link><Link to="/" className="ml-5 bg-orange-500 hover:bg-orange-200 hover:text-orange-500 text-white font-bold rounded py-2 px-4 my-5" >Continuar comprando</Link></> }
           </div>
         </div>
       </div>
