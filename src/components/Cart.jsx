@@ -79,8 +79,7 @@ const Cart = () => {
                     <Link
                       to="/checkout"
                       className="bg-orange-200 border border-orange-400 text-slate-800 text-md font-medium mt-5 ml-4 py-2 px-3 lg:px-8 rounded-lg hover:bg-orange-400"
-                    >
-                      Comprar ahora
+                    ><button onClick={()=> clickClear()}>Comprar ahora</button>
                     </Link>
                   </div>
                 </div>
