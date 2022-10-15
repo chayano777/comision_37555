@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import getProducts from "../services/dataREST";
-import { getCategoryProducts } from "../services/dataREST";
+import { getProducts, getCategoryProducts } from "../services/firestore";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
@@ -8,42 +7,25 @@ import Spinner from "./Spinner";
 
 const ItemListContainer = (props) => {
 
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  }, []);
-
   const { categoryN } = useParams(); 
   const[products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false);
   
   
   useEffect(()=>{
+    setLoading(true);
     if(categoryN === undefined){
     getProducts()
-    .then(
-      (response)=>{ 
-        console.log("Promise en estado puro")
-        setProducts(response)
-      }
-    )
-    .catch((error)=>{
-      alert(error)
-    })}
+    .then((response)=> 
+        setProducts(response))
+    .finally(()=> setLoading(false));  
+  }
     else {
       getCategoryProducts(categoryN)
     .then(
-      (response)=>{ 
-        console.log("Promise en estado puro")
-        setProducts(response)
-      }
-    )
-    .catch((error)=>{
-      alert(error)
-    })
+      (response)=>
+        setProducts(response))
+    .finally(()=>setLoading(false))
     }
   },[categoryN])
 
