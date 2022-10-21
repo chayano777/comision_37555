@@ -52,7 +52,7 @@ const Cart = () => {
                   key={item.id}
                   className="flex mb-3 items-center justify-between px-60"
                 >
-                  <div className="w-3/5 ml-3 text-md">{item.title}</div>
+                  <div className="w-3/5 ml-3 text-xl">{item.title}</div>
                   <button onClick={() => clickRemove(item.id)}>
                     <FaTrash className="text-2xl text-orange-600" />
                   </button>

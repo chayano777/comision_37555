@@ -7,12 +7,12 @@ import { getDocs, getFirestore, collection, doc, getDoc, query, where} from "fir
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC4Esl7X8ATHj2-QIwoiPlbxLuRLoY_4Z8",
-  authDomain: "react37555-52990.firebaseapp.com",
-  projectId: "react37555-52990",
-  storageBucket: "react37555-52990.appspot.com",
-  messagingSenderId: "726128629846",
-  appId: "1:726128629846:web:51b0115039f27592ac83f7"
+  apiKey: "AIzaSyBsFc_tnoO-jcdGJS9aPGK5kXsI2vIO6dU",
+  authDomain: "react-37555-new.firebaseapp.com",
+  projectId: "react-37555-new",
+  storageBucket: "react-37555-new.appspot.com",
+  messagingSenderId: "492099295002",
+  appId: "1:492099295002:web:83baf511baf22acab37ea3"
 };
 
 // Initialize Firebase
