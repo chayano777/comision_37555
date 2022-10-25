@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDocs, getFirestore, collection, doc, getDoc, query, where} from "firebase/firestore";
+import { getDocs, getFirestore, collection, doc, getDoc, query, where, setDoc, addDoc} from "firebase/firestore";
+import { cartContext } from "../context/cartContext";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,6 +19,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+
 
 export async function getProducts(){
   const collectionRef = collection(db, "products");
@@ -47,6 +50,13 @@ export async function getCategoryProducts(catParams){
   })
 
   return dataDocs;
+}
+
+export async function createBuyOrder(orderData){
+  const collectionRef = collection(db, "orders")
+  let response = await addDoc(collectionRef, orderData)
+  console.log(response.id)
+
 }
 
 export default db;

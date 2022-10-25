@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { cartContext } from "../context/cartContext";
 import { useContext, useState, useEffect } from 'react'
 import { FaTrash } from "react-icons/fa";
+import { createBuyOrder } from "../services/firestore";
 
 
 const Cart = () => {
@@ -26,6 +27,22 @@ const Cart = () => {
   };
 
   console.log(cart.length)
+
+  function handleCheckOut() {
+    /* {buyer: {name, phone, mail}, items: [{id, title, price}], total */
+  const orderData = {
+    buyer: {
+      name: "Mariano",
+      phone: "1133584604",
+      mail: "marianoeiro@hotmail.com"
+    }, 
+    items: cart,
+    total: total
+  }
+    createBuyOrder(orderData);
+
+  }
+
 
   return (
     <>
@@ -79,7 +96,7 @@ const Cart = () => {
                     <Link
                       to="/checkout"
                       className="bg-orange-200 border border-orange-400 text-slate-800 text-md font-medium mt-5 ml-4 py-2 px-3 lg:px-8 rounded-lg hover:bg-orange-400"
-                    ><button onClick={()=> clickClear()}>Comprar ahora</button>
+                    ><button onClick={handleCheckOut}>Comprar ahora</button>
                     </Link>
                   </div>
                 </div>
