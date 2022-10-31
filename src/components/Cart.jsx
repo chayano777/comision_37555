@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { cartContext } from "../context/cartContext";
 import { useContext, useState, useEffect } from 'react'
 import { FaTrash } from "react-icons/fa";
-import { createBuyOrder } from "../services/firestore";
+import CheckoutForm from "./CheckoutForm";
+
 
 
 const Cart = () => {
    const { cart, clearCart, removeItem} = useContext(cartContext);
-
    const [total, setTotal] = useState(0);
 
    useEffect (() => {
@@ -18,6 +18,9 @@ const Cart = () => {
     setTotal(a);
   },[cart]);
 
+
+   
+
   const clickRemove = (id) => {
     removeItem(id);
   };
@@ -25,23 +28,6 @@ const Cart = () => {
   const clickClear = () => {
     clearCart();
   };
-
-  console.log(cart.length)
-
-  function handleCheckOut() {
-    /* {buyer: {name, phone, mail}, items: [{id, title, price}], total */
-  const orderData = {
-    buyer: {
-      name: "Mariano",
-      phone: "1133584604",
-      mail: "marianoeiro@hotmail.com"
-    }, 
-    items: cart,
-    total: total
-  }
-    createBuyOrder(orderData);
-
-  }
 
 
   return (
@@ -92,15 +78,9 @@ const Cart = () => {
                   >
                     Borrar Todo
                   </button>
-                  <div className="text-center lg:text-right mt-5">
-                    <Link
-                      to="/checkout"
-                      className="bg-orange-200 border border-orange-400 text-slate-800 text-md font-medium mt-5 ml-4 py-2 px-3 lg:px-8 rounded-lg hover:bg-orange-400"
-                    ><button onClick={handleCheckOut}>Comprar ahora</button>
-                    </Link>
-                  </div>
                 </div>
                 TOTAL ${total}
+                <CheckoutForm />
               </div>
             ) : null}
       </div>

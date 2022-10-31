@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDocs, getFirestore, collection, doc, getDoc, query, where, setDoc, addDoc} from "firebase/firestore";
-import { cartContext } from "../context/cartContext";
+import { getDocs, getFirestore, collection, doc, getDoc, query, where, addDoc} from "firebase/firestore";
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -55,8 +55,96 @@ export async function getCategoryProducts(catParams){
 export async function createBuyOrder(orderData){
   const collectionRef = collection(db, "orders")
   let response = await addDoc(collectionRef, orderData)
-  console.log(response.id)
-
+  return (response.id)
 }
 
+// Exportar Array de objetos a firebase
+/*export async function exportDataToFirebase() {
+  const data = [
+    {
+      id: 1,
+      title: "Ropa Bebe (M)",
+      price: 800,
+      stock: 10,
+      category: "clothing",
+      detail: "Rellenar a futuro",
+      imagen: "/img/ropa1.png"
+    },
+    {
+      id: 2,
+      title: "Ropa Bebe (F)",
+      price: 800,
+      stock: 5,
+      category: "clothing",
+      detail: "Enterito para beba, talle 9 meses",
+      imagen: "/img/ropa2.png"
+    },
+    {
+      id: 3,
+      title: "Body p/ recien nacido (F)",
+      price: 600,
+      stock: 3,
+      category: "clothing",
+      detail: "Rellenar a futuro",
+      imagen: "/img/ropa3.png"
+    },
+    {
+      id: 4,
+      title: "Kit Ropa Bebe (F-M)",
+      price: 2700,
+      stock: 2,
+      category: "clothing",
+      detail: "Rellenar a futuro",
+      imagen: "/img/ropa4.jpg"
+    },
+    {
+      id: 5,
+      title: "Combo Mamadera y Chupete: Winnie-Poo",
+      price: 1500,
+      stock: 5,
+      category: "accesories",
+      detail: "Rellenar a futuro",
+      imagen: "/img/acc1.png"
+    },
+    {
+      id: 6,
+      title: "Canasto para Bebes con Juguetes",
+      price: 3200,
+      stock: 5,
+      category: "accesories",
+      detail: "Rellenar a futuro",
+      imagen: "/img/acc2.png"
+    },
+    {
+      id: 7,
+      title: "Babero para bebe",
+      price: 500,
+      stock: 5,
+      category: "accesories",
+      detail: "Rellenar a futuro",
+      imagen: "/img/acc3.jpg"
+    },
+    {
+      id: 8,
+      title: "Nidito",
+      price: 4000,
+      stock: 5,
+      category: "accesories",
+      detail: "Rellenar a futuro",
+      imagen: "/img/acc4.png"
+    },
+  ];
+
+  const dataSinId = data.map((e)=>{
+    return {title}
+  });
+// collection() => recibe 2 parametro: conexion con firestore y le agregamos el nombre de la coleccion " ... ". 
+  const collectionRef = collection(db, "productos");
+
+  for(let item of data){
+    const newDoc = await addDoc(collectionRef, item);
+  }
+
+}
+*/
 export default db;
