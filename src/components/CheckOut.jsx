@@ -1,25 +1,25 @@
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import Spinner from "./Spinner";
 import { BsEmojiWink } from "react-icons/bs";
-import { useState, useEffect } from "react";
-
-
-
-
+import { useParams } from "react-router-dom";
 
 const Checkout = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(()=>{
-    setLoading(false);
-  },[]);
+  const {orderid} = useParams();
 
   return (
-    <div className="flex justify-center">
-        {loading ? <Spinner spinner={Spinner} /> : <div className='text-orange-700 font-bold text-3xl mt-10 mb-10 text-center'>Gracias por tu compra!!!</div>}
+    <div className="flex mt-10 mb-28 items-center justify-start bg-white px-10 lg:px-0">
+      <div className="mx-auto w-full max-w-lg text-center">
+        <BsEmojiWink className="w-full text-6xl my-10" />
+        <h1 className="text-2xl lg:text-4xl font-medium">
+          Gracias por tu compra!
+        </h1>
+        <p className="mt-3">El número de comprobante de tu compra es:</p>
+        <p className="mt-3 text-lg font-medium">{orderid}</p>
+        <Link to="/" className="text-blue-500 text-sm mt-10">
+          Volver
+        </Link>
       </div>
-    
-  )
-}
+    </div>
+  );
+};
 
-export default Checkout
+export default Checkout;
