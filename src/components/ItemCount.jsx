@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import swal from 'sweetalert2'
 
 const ItemCount = ({stock, initial=1, onAddToCart}) => {
     const [count, setCount] = useState(initial);
@@ -8,7 +9,16 @@ const ItemCount = ({stock, initial=1, onAddToCart}) => {
         if(count<stock){
             setCount(count+1);
         } else {
-            alert("No hay más productos disponibles");
+            swal.fire({
+                width: 400,
+                padding: '1.5em',
+                position: "bottom",
+                html: "<b>No hay más productos disponibles</b>",
+                color: "white",
+                background:"#D35400",
+                showConfirmButton:false,
+                timer: 1500
+            });
         }
     }
     const rest = () => {

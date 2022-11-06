@@ -2,6 +2,7 @@ import ItemCount from "./ItemCount";
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { cartContext }  from "../context/cartContext";
+import swal from 'sweetalert2';
 
 const ItemDetail = ({ idProd }) => {
 
@@ -10,6 +11,15 @@ const ItemDetail = ({ idProd }) => {
   
   const handleAddToCart = (count ) => {
     addItem(idProd, count);
+    swal.fire({
+      width:300,
+      html: "<b>Se agrego al carrito</b>",
+      color:"white",
+      showConfirmButton: false,
+      timer: 1000,
+      position: "bottom-right",
+      background: "#2ECC71"
+    });
     setHandleEstado(true)
   }
 
