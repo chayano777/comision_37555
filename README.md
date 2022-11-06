@@ -12,11 +12,13 @@ Proyecto de tienda online para la comercializacion de productos para recien naci
 
 - `Funcionalidad 1`: Listado de productos en cards con resumen de información del mismo.
 - `Funcionalidad 2`: Detalle del producto con imágenes y descripción.
-
-
+- `Funcionalidad 3`: Carrito de compras con gestión de productos.
+- `Funcionalidad 4`: Formulario de compras.
+- `Funcionalidad 5`: Integración con Firestore / Firebase de Google.
 ## Tecnologías utilizadas 🛠️
 
 - React JS
+- Firestore Database
 
 ## Comenzando 🚀
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas_
